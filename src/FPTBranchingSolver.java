@@ -106,33 +106,33 @@ public class FPTBranchingSolver extends Solver {
 			res = tmp.toArray();
 			return;
 		}
-		if (ReductionRoot.LEVEL >= 2) {
-			double[] x = new HalfIntegralRelax().solve(g, s);
-			if (ub <= x[g.n] + 0.5)
-				return;
-			if (x[g.n] * 2 != g.adj[s].length) {
-				int[] que = new int[g.n];
-				int qs = 0, qt = 0;
-				boolean[] used = new boolean[g.n];
-				que[qt++] = s;
-				used[s] = true;
-				while (qs < qt) {
-					int v = que[qs++];
-					for (int u : g.adj[v])
-						if (x[u] == 0 && !used[u]) {
-							que[qt++] = u;
-							used[u] = true;
-						}
-				}
-				for (int i = 1; i < qt; i++)
-					g.contract(que[i], s);
-				for (int i = 0; i < g.n; i++)
-					if (x[i] == 1 && g.used[i] == 0)
-						g.setS(i);
-				solve(g, s);
-				return;
-			}
-		}
+		// if (ReductionRoot.LEVEL >= 2) {
+		// double[] x = new HalfIntegralRelax().solve(g, s);
+		// if (ub <= x[g.n] + 0.5)
+		// return;
+		// if (x[g.n] * 2 != g.adj[s].length) {
+		// int[] que = new int[g.n];
+		// int qs = 0, qt = 0;
+		// boolean[] used = new boolean[g.n];
+		// que[qt++] = s;
+		// used[s] = true;
+		// while (qs < qt) {
+		// int v = que[qs++];
+		// for (int u : g.adj[v])
+		// if (x[u] == 0 && !used[u]) {
+		// que[qt++] = u;
+		// used[u] = true;
+		// }
+		// }
+		// for (int i = 1; i < qt; i++)
+		// g.contract(que[i], s);
+		// for (int i = 0; i < g.n; i++)
+		// if (x[i] == 1 && g.used[i] == 0)
+		// g.setS(i);
+		// solve(g, s);
+		// return;
+		// }
+		// }
 		int v = -1;
 		for (int u : g.adj[s]) {
 			if (v < 0 || g.adj[v].length < g.adj[u].length)
@@ -149,9 +149,11 @@ public class FPTBranchingSolver extends Solver {
 	}
 
 	void count() {
-		// if (Long.bitCount(++counter) == 1) Debug.print("#branch", counter);
 		if (Long.bitCount(++counter) == 1)
 			;
+		// Debug.print("#branch", counter);
+		// if (Long.bitCount(++counter) == 1)
+		;
 	}
 
 }

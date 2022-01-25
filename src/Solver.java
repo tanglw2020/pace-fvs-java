@@ -13,7 +13,7 @@ public abstract class Solver {
 	void update(int[] res) {
 		ub = res.length;
 		this.res = res;
-		outputUB = false;
+		// outputUB = false;
 		if (outputUB)
 			System.err.printf("ub = %d%n", add + ub);
 	}

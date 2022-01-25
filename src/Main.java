@@ -24,7 +24,7 @@ public class Main {
 		GraphIO io = new GraphIO();
 		io.read(System.in);
 		Solver solver = (Solver) Class.forName(algo).newInstance();
-		solver.outputUB = true;
+		solver.outputUB = false;
 		long time = -System.currentTimeMillis();
 		solver.solve(new Graph(io.adj));
 		time += System.currentTimeMillis();

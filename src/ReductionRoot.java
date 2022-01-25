@@ -31,10 +31,10 @@ public class ReductionRoot {
 				if (bridge(g))
 					continue;
 			}
-			if (LEVEL >= 2) {
-				if (ksub(g))
-					continue;
-			}
+			// if (LEVEL >= 2) {
+			// if (ksub(g))
+			// continue;
+			// }
 			break;
 		}
 		if (DEBUG)
