@@ -1,5 +1,3 @@
-import tc.wata.data.*;
-import tc.wata.debug.*;
 
 public abstract class Solver {
 

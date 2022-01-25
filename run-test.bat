@@ -8,8 +8,7 @@ type ..\PACE-fvs-master\public\006.graph | java -cp .\bin\ Main
 type ..\PACE-fvs-master\public\007.graph | java -cp .\bin\ Main 
 type ..\PACE-fvs-master\public\008.graph | java -cp .\bin\ Main 
 type ..\PACE-fvs-master\public\009.graph | java -cp .\bin\ Main 
-@REM type ..\PACE-fvs-master\public\010.graph | java -cp .\bin\ Main
-ECHO 0 0 
+type ..\PACE-fvs-master\public\010.graph | java -cp .\bin\ Main
 type ..\PACE-fvs-master\public\011.graph | java -cp .\bin\ Main 
 type ..\PACE-fvs-master\public\012.graph | java -cp .\bin\ Main 
 type ..\PACE-fvs-master\public\013.graph | java -cp .\bin\ Main 

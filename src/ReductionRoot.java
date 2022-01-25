@@ -3,7 +3,6 @@ import static java.util.Arrays.*;
 import java.util.*;
 
 import tc.wata.data.*;
-import tc.wata.debug.*;
 import tc.wata.util.*;
 
 public class ReductionRoot {
@@ -31,10 +30,6 @@ public class ReductionRoot {
 				if (bridge(g))
 					continue;
 			}
-			// if (LEVEL >= 2) {
-			// if (ksub(g))
-			// continue;
-			// }
 			break;
 		}
 		if (DEBUG)
@@ -189,51 +184,6 @@ public class ReductionRoot {
 		if (DEBUG && oldN != newN)
 			System.err.printf("dex2Ex: %d -> %d%n", oldN, newN);
 		return oldN != newN;
-	}
-
-	static boolean ksub(Graph g) {
-		int oldN = g.n();
-		int[] que = new int[g.n];
-		FastSet used = new FastSet(g.n);
-		boolean reduced = false;
-		for (int s = 0; s < g.n; s++)
-			if (g.adj[s].length > 0) {
-				double[] x = new HalfIntegralRelax().solve(g, s);
-				for (int v = 0; v < g.n; v++)
-					if (x[v] == 1) {
-						for (int c = g.hasEdge(s, v); c < 2; c++) {
-							g.addE(s, v);
-							reduced = true;
-						}
-					}
-				used.clear();
-				for (int t : g.adj[s])
-					if (used.add(t) && x[t] < 1) {
-						boolean bridge = true;
-						int qs = 0, qt = 0;
-						que[qt++] = t;
-						while (qs < qt) {
-							int u = que[qs++];
-							for (int v : g.adj[u])
-								if (x[v] < 1) {
-									if (v == s) {
-										if (u != t)
-											bridge = false;
-									} else if (used.add(v)) {
-										que[qt++] = v;
-									}
-								}
-						}
-						if (bridge) {
-							g.removeE(s, t);
-							reduced = true;
-						}
-					}
-			}
-		int newN = g.n();
-		if (DEBUG && reduced)
-			System.err.printf("ksub: %d -> %d%n", oldN, newN);
-		return reduced;
 	}
 
 	static boolean dominate(Graph g) {

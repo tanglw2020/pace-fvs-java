@@ -273,7 +273,6 @@ public class Reduction {
 	}
 
 	static boolean bridge(Graph g) {
-		int oldN = g.n();
 		boolean reduced = false;
 		Biconnected bi = new Biconnected(g.adj);
 		IntArray tmp = new IntArray();

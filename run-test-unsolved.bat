@@ -1,7 +1,7 @@
 @REM @ECHO OFF
 
 @REM type ..\PACE-fvs-master\public\004.graph | java -cp .\bin\ Main 
-type ..\PACE-fvs-master\public\016.graph | java -cp .\bin\ Main
+@REM type ..\PACE-fvs-master\public\016.graph | java -cp .\bin\ Main
 type ..\PACE-fvs-master\public\048.graph | java -cp .\bin\ Main 
 type ..\PACE-fvs-master\public\053.graph | java -cp .\bin\ Main 
 type ..\PACE-fvs-master\public\054.graph | java -cp .\bin\ Main 

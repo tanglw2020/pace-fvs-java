@@ -7,11 +7,11 @@ import tc.wata.data.*;
 import tc.wata.io.*;
 
 public class GraphIO {
-	
+
 	public int n;
 	public int[][] adj;
 	public String[] name;
-	
+
 	public void read(InputStream in) {
 		Map<String, Integer> ids = new TreeMap<>();
 		ArrayList<String> names = new ArrayList<>();
@@ -24,12 +24,14 @@ public class GraphIO {
 				continue;
 			}
 			String v = sc.next();
-			es.add(new int[]{getID(ids, names, u), getID(ids, names, v)});
+			es.add(new int[] { getID(ids, names, u), getID(ids, names, v) });
 		}
+		sc.close();
 		n = names.size();
 		name = names.toArray(new String[0]);
 		IntArray[] g = new IntArray[n];
-		for (int i = 0; i < n; i++) g[i] = new IntArray();
+		for (int i = 0; i < n; i++)
+			g[i] = new IntArray();
 		for (int[] e : es) {
 			int u = e[0], v = e[1];
 			g[u].add(v);
@@ -41,7 +43,7 @@ public class GraphIO {
 			sort(adj[i]);
 		}
 	}
-	
+
 	int getID(Map<String, Integer> ids, ArrayList<String> names, String s) {
 		Integer id = ids.get(s);
 		if (id == null) {
@@ -51,8 +53,8 @@ public class GraphIO {
 		}
 		return id;
 	}
-	
-	public void write(PrintStream out) {
+
+	public void write(PrintStream out) throws IOException {
 		FastPrintWriter pw = new FastPrintWriter(out);
 		for (int i = 0; i < n; i++) {
 			for (int e = 0; e < adj[i].length; e++) {
@@ -71,6 +73,7 @@ public class GraphIO {
 			}
 		}
 		pw.flush();
+		pw.close();
 	}
-	
+
 }

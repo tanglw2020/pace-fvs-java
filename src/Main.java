@@ -1,4 +1,3 @@
-import java.io.*;
 
 import tc.wata.debug.*;
 import tc.wata.util.*;
@@ -29,11 +28,10 @@ public class Main {
 		solver.solve(new Graph(io.adj));
 		time += System.currentTimeMillis();
 		// System.err.printf("time = %.3f%n", time * 1e-3);
-		// System.err.printf("time\t%.3f\t", time * 1e-3);
 		System.err.printf("%.3f\t", time * 1e-3);
 		if (solver.ub < Integer.MAX_VALUE) {
 			Test.test(io.adj, solver.res);
-			// System.err.printf("opt\t%d%n", solver.ub);
+			// System.err.printf("opt=\t%d%n", solver.ub);
 			System.err.printf("%d%n", solver.ub);
 			// if (output) {
 			// for (int i : solver.res) System.out.println(io.name[i]);
